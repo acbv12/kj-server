@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<!-- 使用 mvn mybatis-generator:generate -->
+<generatorConfiguration>
+    <context id="MybatisDB" targetRuntime="MyBatis3Simple" defaultModelType="flat">
+        <!-- 插件 -->
+        <!--<plugin type="com.softwareloop.mybatis.generator.plugins.LombokPlugin">-->
+            <!--<property name="builder" value="false"/>-->
+            <!--<property name="allArgsConstructor" value="false"/>-->
+            <!--<property name="chain" value="true"/>-->
+        <!--</plugin>-->
+        <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
+            <property name="mappers" value="com.kj.common.util.MyMapper"/>
+        </plugin>
+
+        <!-- 取消生成的代码注释 -->
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <!-- 连接配置 -->
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                        connectionURL="jdbc:mysql://127.0.0.1:3306/kj1?serverTimezone=UTC"
+                        userId="root"
+                        password="501020@Acbv">
+        </jdbcConnection>
+
+        <!-- javaModelGenerator是模型的生成信息，这里将指定这些Java model类的生成路径 -->
+        <javaModelGenerator targetPackage="com.kj.model" targetProject="../kj-model/src/main/java">
+            <property name="rootClass" value="com.kj.model.BaseEntity"/>
+        </javaModelGenerator>
+
+        <!-- 生成Mapper 配置文件 -->
+        <sqlMapGenerator targetPackage="mapper" targetProject="../kj-dao/src/main/resources">
+        </sqlMapGenerator>
+
+        <!-- javaClientGenerator是应用接口的生成信息 -->
+        <javaClientGenerator type="XMLMAPPER"
+                             targetPackage="com.kj.mapper" targetProject="../kj-dao/src/main/java">
+        </javaClientGenerator>
+
+
+        <!-- oracle 使用 schema 对应 用户名称空间 mysql 使用 catalog 对应 数据库 -->
+        <table catalog="kj1" tableName="app_user">
+            <property name="" value="true"/>
+        </table>
+    </context>
+</generatorConfiguration>

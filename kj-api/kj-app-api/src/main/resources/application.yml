@@ -1,0 +1,245 @@
+spring:
+  # profiles
+  profiles:
+    active: dev
+
+  # http
+  http:
+    encoding:
+      enabled: true
+
+  # 异常统一处理
+  mvc:
+    throw-exception-if-no-handler-found: true
+#  resources:
+#    add-mappings: false
+
+# mybatis
+mybatis:
+    type-aliases-package: com.kj.model
+    mapper-locations: classpath:mapper/*.xml
+
+# mapper
+mapper:
+    mappers:
+        - com.kj.common.util.MyMapper
+    not-empty: false
+    identity: MYSQL
+
+# pagehelper
+pagehelper:
+    helperDialect: mysql
+    reasonable: fasle
+    supportMethodsArguments: true
+    params: count=countSql
+
+# token配置
+audience:
+    clientId: 7a14e7015d0a49c6a308b98e400f29d8
+    base64Secret: N2ExNGU3MDE1ZDBhNDljNmEzMDhiOThlNDAwZjI5ZDg=
+    name: kjApi
+    expires: 2592000000
+
+---
+#==========================================开发环境==================================================
+# 开发环境配置
+spring:
+  profiles: dev
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/kj1?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&useSSL=false
+    username: root
+    password: 501020@Acbv
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.zaxxer.hikari.HikariDataSource
+
+server:
+  port: 8989
+  tomcat:
+      max-connections: 6000
+      max-threads: 6000
+      max-http-post-size: 0
+
+# 微信配置
+wechat:
+  mp:
+    appId: wx0bf44b7a866ea364
+    secret: 82910980bc6b2ecc46a86e9402d4ac77
+    token: kj
+    aesKey:
+
+# 支付相关配置
+payConfig:
+  wechatNotifyUrl: "https://apitest.storeer.com/v2/api/wechatPay/notify/paid"
+  alipayNotifyUrl: "https://apitest.storeer.com/v2/api/aliPay/notify/paid"
+  memRechargeAlipayNotifyUrl: "https://apitest.storeer.com/v2/api/memRecharge/aliPay/notify/paid"
+  memRechargeWxpayNotifyUrl: "https://apitest.storeer.com/v2/api/memRecharge/wechatPay/notify/paid"
+  memRechargeWxpayMpNotifyUrl: "https://apitest.storeer.com/v2/api/memRecharge/wechatMpPay/notify/paid"
+  merRechargeAliPayNotifyUrl: "https://apitest.storeer.com/v2/api/uploadFunds/notify/aliPay"
+  merRechargeWxPayNotifyUrl: "https://apitest.storeer.com/v2/api/uploadFunds/notify/wxPay"
+
+# 微信公众号配置
+wechatMpConfig:
+  backDomain: "http://apitest.storeer.com"
+  frontDomain: "http://sin.ngrok.storeer.com"
+---
+#==========================================测试环境==================================================
+# 测试环境配置
+spring:
+  profiles: test
+  datasource:
+    url: jdbc:mysql://192.168.1.102:3306/kj2?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&useSSL=false
+    username: root
+    password: zxcv!@#
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.zaxxer.hikari.HikariDataSource
+
+server:
+  port: 8888
+  tomcat:
+      max-connections: 6000
+      max-threads: 6000
+      max-http-post-size: 10485760
+
+# 微信配置
+wechat:
+  mp:
+  # 正式
+#    appId: wx0317284be4c2d0ad
+#    secret: b3fca8c21865d1d4ba00e63d74ab591c
+  # 测试
+    appId: wx0bf44b7a866ea364
+    secret: 82910980bc6b2ecc46a86e9402d4ac77
+    token: kj
+    aesKey:
+
+# 支付相关配置
+payConfig:
+  wechatNotifyUrl: "https://apitest.storeer.com/v2/api/wechatPay/notify/paid"
+  wechatMpNotifyUrl: "https://apitest.storeer.com/v2/api/wechatMpPay/notify/paid"
+  alipayNotifyUrl: "https://apitest.storeer.com/v2/api/aliPay/notify/paid"
+  memRechargeAlipayNotifyUrl: "https://apitest.storeer.com/v2/api/memRecharge/aliPay/notify/paid"
+  memRechargeWxpayNotifyUrl: "https://apitest.storeer.com/v2/api/memRecharge/wechatPay/notify/paid"
+  memRechargeWxpayMpNotifyUrl: "https://apitest.storeer.com/v2/api/memRecharge/wechatMpPay/notify/paid"
+  merRechargeAliPayNotifyUrl: "https://apitest.storeer.com/v2/api/uploadFunds/notify/aliPay"
+  merRechargeWxPayNotifyUrl: "https://apitest.storeer.com/v2/api/uploadFunds/notify/wxPay"
+
+# 微信公众号配置
+wechatMpConfig:
+  backDomain: "https://apitest.storeer.com"
+  frontDomain: "https://sin.ngrok.storeer.com"
+  frontDomainMyStore: "https://sin.ngrok.storeer.com/uCenter/store/storeList"
+  frontDomainMyOrder: "https://sin.ngrok.storeer.com/order/orderList?type=0"
+  mediaId: "ItPyF_ok4Hou1Rw_bFKVNokie31vneLABooUXf8N4nY"
+
+# 活动配置
+activityConfig:
+  artifactActivityUrl: "https://sxsintest.storeer.com/activity/coupons_success?xd_code=XD0006"
+  yearEndActivityCode: a5ffddde09ce4dc095887411cd5d505d
+  transFlag: false
+  yearEndActivityUrl: "https://sxsintest.storeer.com/activity_2018/yearend_reward?xd_code=XD0006"
+  goddessActivityCode: a19f63bd38b344749865a028e10ca42b
+  demoActivityCode: dc4501ea1e92420a90c13b07d1d30da0
+  vipActivityCode: dc78e1d7935a4f8aa0ac26f8ddf3ea99
+  mayDayActivityCode: 7d452712155a4dd19e28393c46fce84b
+  mayDayActivityCountdownType: 1
+  mayDayActivityUrl: "https://sxsintest.storeer.com/activity_2018/mayday_index?xd_code=XD0006"
+  doubleMidAutumnBeginTimeStr: "2018-09-10 00:00:00"
+  doubleMidAutumnEndTimeStr: "2018-09-24 23:59:59"
+  doubleNationalDayBeginTimeStr: "2018-09-25 00:00:00"
+  doubleNationalDayEndTimeStr: "2018-10-07 23:59:59"
+  doubleStaffShareBonus: "2"
+  doubleStaffBuyBonus: "3"
+  doubleMidAutumnUrl: "https://sintest.storeer.com/activity_2018/midautumn_gifts?xd_code=XD0006&storeCode=&staffCode="
+  couponUrl: "https://wap.storeer.com/uCenter/coupon"
+
+# 老板端相关配置
+bossConfig:
+  reportUrl: "https://sxsintest.storeer.com/boss/report_redirect?"
+
+# 导购端相关配置
+staffConfig:
+  storeQrUrl: "https://sintest.storeer.com/concernStoreByQR?storeCode="
+
+# 定时任务配置
+taskConfig:
+  running: false
+
+---
+#==========================================生产环境==================================================
+# 生产环境配置
+spring:
+  profiles: prod
+  datasource:
+    url: jdbc:mysql://localhost:3306/kj2?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&useSSL=false
+    username: root
+    password: Laibaoapi2017!@#
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.zaxxer.hikari.HikariDataSource
+
+# tomcat配置
+server:
+  port: 8081
+  tomcat:
+    max-connections: 6000
+    max-threads: 6000
+    max-http-post-size: 10485760
+
+# 微信配置
+wechat:
+  mp:
+    appId: wx0317284be4c2d0ad
+    secret: b3fca8c21865d1d4ba00e63d74ab591c
+    token: kj
+    aesKey:
+
+# 支付相关配置
+payConfig:
+  wechatNotifyUrl: "https://api.storeer.com/v2/api/wechatPay/notify/paid"
+  wechatMpNotifyUrl: "https://api.storeer.com/v2/api/wechatMpPay/notify/paid"
+  alipayNotifyUrl: "https://api.storeer.com/v2/api/aliPay/notify/paid"
+  memRechargeAlipayNotifyUrl: "https://api.storeer.com/v2/api/memRecharge/aliPay/notify/paid"
+  memRechargeWxpayNotifyUrl: "https://api.storeer.com/v2/api/memRecharge/wechatPay/notify/paid"
+  memRechargeWxpayMpNotifyUrl: "https://api.storeer.com/v2/api/memRecharge/wechatMpPay/notify/paid"
+  merRechargeAliPayNotifyUrl: "https://api.storeer.com/v2/api/uploadFunds/notify/aliPay"
+  merRechargeWxPayNotifyUrl: "https://api.storeer.com/v2/api/uploadFunds/notify/wxPay"
+
+# 微信公众号配置
+wechatMpConfig:
+  backDomain: "https://api.storeer.com"
+  frontDomain: "https://wap.storeer.com"
+  frontDomainMyStore: "https://wap.storeer.com/uCenter/store/storeList"
+  frontDomainMyOrder: "https://wap.storeer.com/order/orderList?type=0"
+  mediaId: "ItPyF_ok4Hou1Rw_bFKVNokie31vneLABooUXf8N4nY"
+
+# 活动配置
+activityConfig:
+  artifactActivityUrl: "https://singlePage.storeer.com/activity/coupons_success?xd_code=XD0006"
+  yearEndActivityCode: a5ffddde09ce4dc095887411cd5d505d
+  transFlag: true
+  yearEndActivityUrl: "https://singlepage.storeer.com/activity_2018/yearend_reward?xd_code=XD0006"
+  goddessActivityCode: a19f63bd38b344749865a028e10ca42b
+  demoActivityCode: dc4501ea1e92420a90c13b07d1d30da0
+  vipActivityCode: dc78e1d7935a4f8aa0ac26f8ddf3ea99
+  mayDayActivityCode: 7d452712155a4dd19e28393c46fce84b
+  mayDayActivityCountdownType: 2
+  mayDayActivityUrl: "https://singlepage.storeer.com/activity_2018/mayday_index?xd_code=XD0006"
+  doubleMidAutumnBeginTimeStr: "2018-09-15 00:00:00"
+  doubleMidAutumnEndTimeStr: "2018-09-24 23:59:59"
+  doubleNationalDayBeginTimeStr: "2018-09-25 00:00:00"
+  doubleNationalDayEndTimeStr: "2018-10-07 23:59:59"
+  doubleStaffShareBonus: "6"
+  doubleStaffBuyBonus: "8"
+  doubleMidAutumnUrl: "https://singlepage.storeer.com/activity_2018/midautumn_gifts?xd_code=XD0006&storeCode=&staffCode="
+  couponUrl: "https://wap.storeer.com/uCenter/coupon"
+
+# 老板端相关配置
+bossConfig:
+  reportUrl: "https://singlepage.storeer.com/boss/report_redirect?"
+
+# 导购端相关配置
+staffConfig:
+  storeQrUrl: "https://singlepage.storeer.com/concernStoreByQR?storeCode="
+
+# 定时任务配置
+taskConfig:
+  running: true
