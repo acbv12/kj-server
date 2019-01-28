@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 @RestController
-@RequestMapping("/v1/api")
+@RequestMapping("/v1/api/user")
 
 public class ApiUserController {
 

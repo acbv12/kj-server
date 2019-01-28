@@ -29,7 +29,7 @@
         </jdbcConnection>
 
         <!-- javaModelGenerator是模型的生成信息，这里将指定这些Java model类的生成路径 -->
-        <javaModelGenerator targetPackage="com.kj.model" targetProject="../kj-model/src/main/java">
+        <javaModelGenerator targetPackage="com.kj.model.POJO" targetProject="../kj-model/src/main/java">
             <property name="rootClass" value="com.kj.model.BaseEntity"/>
         </javaModelGenerator>
 
@@ -44,8 +44,8 @@
 
 
         <!-- oracle 使用 schema 对应 用户名称空间 mysql 使用 catalog 对应 数据库 -->
-        <table catalog="kj1" tableName="app_user">
-            <property name="" value="true"/>
+        <table catalog="kj1" tableName="">
+            <property name="ignoreQualifiersAtRuntime" value="true"/>
         </table>
     </context>
 </generatorConfiguration>

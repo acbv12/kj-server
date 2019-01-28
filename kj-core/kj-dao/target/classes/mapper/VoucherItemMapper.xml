@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kj.mapper.VoucherItemMapper">
+  <resultMap id="BaseResultMap" type="com.kj.model.POJO.VoucherItem">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="voucher_code" jdbcType="INTEGER" property="voucherCode" />
+    <result column="desc" jdbcType="VARCHAR" property="desc" />
+    <result column="voucher_type" jdbcType="VARCHAR" property="voucherType" />
+    <result column="voucher_name" jdbcType="VARCHAR" property="voucherName" />
+    <result column="income" jdbcType="REAL" property="income" />
+    <result column="expenditure" jdbcType="REAL" property="expenditure" />
+  </resultMap>
+</mapper>

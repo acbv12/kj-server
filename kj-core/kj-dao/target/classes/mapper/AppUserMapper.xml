@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.kj.mapper.AppUserMapper">
-  <resultMap id="BaseResultMap" type="com.kj.model.AppUser">
+  <resultMap id="BaseResultMap" type="com.kj.model.POJO.AppUser">
     <!--
       WARNING - @mbg.generated
     -->
     <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="app_user_code" jdbcType="VARCHAR" property="appUserCode" />
     <result column="user_name" jdbcType="VARCHAR" property="userName" />
     <result column="user_password" jdbcType="VARCHAR" property="userPassword" />
     <result column="phone" jdbcType="VARCHAR" property="phone" />

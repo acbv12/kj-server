@@ -1,7 +1,7 @@
 package com.kj.service;
 
 import com.kj.mapper.AppUserMapper;
-import com.kj.model.AppUser;
+import com.kj.model.POJO.AppUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

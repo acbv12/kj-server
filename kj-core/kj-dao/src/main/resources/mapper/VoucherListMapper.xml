@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kj.mapper.VoucherListMapper">
+  <resultMap id="BaseResultMap" type="com.kj.model.POJO.VoucherList">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+  </resultMap>
+  <select id="listVoucher" resultType="map">
+    SELECT
+    vl.id, vl.status, vl.name, vl.type
+    FROM voucher_list vl
+  </select>
+</mapper>
